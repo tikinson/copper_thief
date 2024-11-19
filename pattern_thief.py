@@ -33,7 +33,7 @@ class StreamToLogger(object):
 
 # set up logger
 logging.basicConfig(level=logging.DEBUG,
-                    filename="D:\CODE\copper_thief\pattern_thief.txt",
+                    filename="D:\pattern_thief.txt",
                     filemode='w',
                     format='%(asctime)s %(name)s %(lineno)d:%(message)s',
                     datefmt='%m-%d %H:%M:%S')
