@@ -10,4 +10,4 @@ Thanks [mrussell42](https://github.com/mrussell42) for this plugin.
 
 license: [GPLv3 License](LICENSE.md)
 
-![Pattern Thief Icon](icons/pattern_thief_icon.png)
+![Pattern Thief Icon](icons/pattern_thief_logo.png)
