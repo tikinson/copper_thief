@@ -10,18 +10,18 @@ from wx import ID_ANY, DefaultPosition, Size, DefaultSize, ALL, EXPAND, \
 # import wx.xrc
 
 
-class CopperThiefDlg(Dialog):
+class PatternThiefDlg(Dialog):
 
-    """Gui for Copper Thief widget."""
+    """Gui for Pattern Thief widget."""
 
     def __init__(self, parent):
-        Dialog.__init__(self, parent, id=ID_ANY, title=u"Copper Thief Parameters", pos=DefaultPosition, size=Size(432, 532), style=CAPTION | CLOSE_BOX | DEFAULT_DIALOG_STYLE | RESIZE_BORDER)
+        Dialog.__init__(self, parent, id=ID_ANY, title=u"Pattern Thief Parameters", pos=DefaultPosition, size=Size(432, 532), style=CAPTION | CLOSE_BOX | DEFAULT_DIALOG_STYLE | RESIZE_BORDER)
 
         self.SetSizeHints(DefaultSize, DefaultSize)
 
         bSizer3 = BoxSizer(VERTICAL)
 
-        self.m_comment = StaticText(self, ID_ANY, u"Select a zone to convert to dots\n", DefaultPosition, DefaultSize, 0)
+        self.m_comment = StaticText(self, ID_ANY, u"Select a zone to convert to pattern (default - dots)\n", DefaultPosition, DefaultSize, 0)
         self.m_comment.Wrap(-1)
 
         bSizer3.Add(self.m_comment, 0, ALL | EXPAND, 5)

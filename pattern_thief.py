@@ -6,7 +6,7 @@ import pcbnew
 import os
 import sys
 import logging
-from . import CopperThiefDlg
+from . import PatternThiefGUI
 THIEVING_ZONENAMES = ['thieving', 'theiving', 'thief', 'theif', 'dotsarray']
 
 
@@ -33,7 +33,7 @@ class StreamToLogger(object):
 
 # set up logger
 logging.basicConfig(level=logging.DEBUG,
-                    filename="/home/mrussell/logs/thief.log",
+                    filename="D:\CODE\copper_thief\pattern_thief.txt",
                     filemode='w',
                     format='%(asctime)s %(name)s %(lineno)d:%(message)s',
                     datefmt='%m-%d %H:%M:%S')
@@ -46,13 +46,13 @@ stderr_logger = logging.getLogger('STDERR')
 sl_err = StreamToLogger(stderr_logger, logging.ERROR)
 sys.stderr = sl_err
 
-
-class CopperThief_Dlg(CopperThiefDlg.CopperThiefDlg):
+# no copperthief anymore MUST BE PATTERNTIEF
+class PatternThief_Dlg(PatternThiefGUI.PatternThiefDlg):
     def SetSizeHints(self, sz1, sz2):
         if wx.__version__ < '4.0':
             self.SetSizeHintsSz(sz1, sz2)
         else:
-            super(CopperThief_Dlg, self).SetSizeHints(sz1, sz2)
+            super(PatternThief_Dlg, self).SetSizeHints(sz1, sz2)
 
     def onDeleteClick(self, event):
         return self.EndModal(wx.ID_DELETE)
@@ -61,16 +61,16 @@ class CopperThief_Dlg(CopperThiefDlg.CopperThiefDlg):
         return self.EndModal(wx.ID_REVERT)
 
     def __init__(self, parent):
-        CopperThiefDlg.CopperThiefDlg.__init__(self, parent)
+        PatternThiefGUI.PatternThiefDlg.__init__(self, parent)
         self.SetMinSize(self.GetSize())
 
 
-class Copper_Thief(pcbnew.ActionPlugin):
+class Pattern_Thief(pcbnew.ActionPlugin):
     def defaults(self):
-        self.name = "Copper Thief"
-        self.category = "Modify PCB"
-        self.description = "Replace a zone with dots"
-        self.icon_file_name = os.path.join(os.path.dirname(__file__), "./dots_icon.png")
+        self.name = "Pattern Thieerf"
+        self.category = "Modify PCB by copper thieving technique with patterns"
+        self.description = "Replace a zone with patterns (default dots)"
+        self.icon_file_name = os.path.join(os.path.dirname(__file__), "./icons/pattern_thief_logo.png")
         self.show_toolbar_button = True
 
     def Warn(self, message, caption='Warning!'):
@@ -81,19 +81,18 @@ class Copper_Thief(pcbnew.ActionPlugin):
 
     def Run(self):
 
-
-
         board = pcbnew.GetBoard()
         windows = [x for x in wx.GetTopLevelWindows()]
 
         try:
             parent_frame = [x for x in windows if 'pcbnew' in x.GetTitle().lower()][0]
+            logger.info('im here')
         except IndexError:
             # Kicad 6 window title is "pcb editor"
             parent_frame = [x for x in windows if 'pcb editor' in x.GetTitle().lower()][0]
                 
         print(parent_frame)
-        aParameters = CopperThief_Dlg(parent_frame)
+        aParameters = PatternThief_Dlg(parent_frame)
 
         aParameters.m_spacing.SetValue("2")
         aParameters.m_radius.SetValue("0.5")

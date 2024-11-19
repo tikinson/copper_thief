@@ -1,3 +1,3 @@
-from .copper_thief import Copper_Thief
+from .pattern_thief import Pattern_Thief
 
-Copper_Thief().register()
+Pattern_Thief().register()

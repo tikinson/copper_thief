@@ -1,0 +1,26 @@
+{
+    "name": "Pattern Thief",
+    "description": "A plugin to create custom patterns in copper zones",
+    "description_full": "Create patterns on zones in your pcb \n\u2022 (Inspired by Copper Thief Plugin.) \n\u2022 Stylization is not a crime.",
+    "version": "0.1.0",
+    "type": "ActionPlugin",
+        "author": {
+        "name": "Tikin Tikinson",
+        "contact": {
+            "web": "",
+            "email": "tikintikitn@gmail.com"
+        }
+    },
+    "license": "GNU General Public License v3.0",
+    "resources": {},
+    "tags": [
+        "copper thieving",
+        "utils",
+        "zones",
+        "pcb stylization"
+    ],
+    "icon": "./icons/pattern_thief_logo.png",
+    "show_toolbar": true,
+    "dependencies": [],
+    "compatible_versions": [">=6.0"]
+  }
